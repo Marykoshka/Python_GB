@@ -16,26 +16,26 @@ class Cell:
         return f"Cell ({self.cell_cells})"
 
     def __add__(self, other):
-        return Cell(self.cell_cells + other.cell_cells)
+        return f"Результат сложения: {Cell(self.cell_cells + other.cell_cells)}"
 
     def __sub__(self, other):
         if other.cell_cells > self.cell_cells:
             raise ValueError("Количество ячеек вычитаемой клетки больше.Поменяйте клетки местами.")
 
-        return Cell(self.cell_cells - other.cell_cells)
+        return f"Результат вычитания: {Cell(self.cell_cells - other.cell_cells)}"
 
     def __mul__(self, other):
-        return Cell(self.cell_cells * other.cell_cells)
+        return f"Результат умножения: {Cell(self.cell_cells * other.cell_cells)}"
 
     def __truediv__(self, other):
         if other.cell_cells > self.cell_cells:
             raise ValueError("Количество ячеек делимой клетки больше.Поменяйте клетки местами.")
 
-        return Cell(self.cell_cells // other.cell_cells)
+        return f"Результат деления: {Cell(self.cell_cells // other.cell_cells)}\n"
 
     def make_order(self, r):
         self.raw = r
-        self.str_raw = (self.cell_cells // self.raw) * (self.raw * "@_" + "\n") + self.cell_cells % self.raw * "@"
+        self.str_raw = (self.cell_cells // self.raw) * (self.raw * "@_" + "\n") + self.cell_cells % self.raw * "@_" + '\n'
         print(self.str_raw)
 
 cell_1 = Cell(50)
@@ -44,5 +44,5 @@ print(cell_1 + cell_2)
 print(cell_1 - cell_2)
 print(cell_1 * cell_2)
 print(cell_1 / cell_2)
-cell_1.make_order(10)
-cell_1.make_order(5)
+cell_1.make_order(9)
+cell_2.make_order(5)
